@@ -1,2 +1,0 @@
-# VotingDay
-VotingDay
