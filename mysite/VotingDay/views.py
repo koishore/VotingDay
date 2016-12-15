@@ -187,6 +187,12 @@ def results(request):
         currentEQ = currentEQ - 1
         extra = 0
 
+    #recursive algorithm
+    #takes in election quiotient
+    #calculates number of seats
+    #checks total seats
+    #calls itself with election quotient -1
+
     #makes a list of people who got elected and saves them with the number of votes zipped
     result = []
     for i in range (0, number_of_parties):

@@ -82,6 +82,25 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="{% static 'VotingDay/js/materialize.js' %}"></script>
     <script src="{% static 'VotingDay/js/init.js' %}"></script>
+    <!-- <script>
+        $(document).on('submit', '#loginform', function (e) {
+            $.ajax({
+                type: "POST",
+                url: "/main.html/",
+                data: {
+                    email: $('#%s', (email, )),
+                    id: $('#%s', (id, )),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function (response) {
+                    alert(response);
+                },
+                error: function (data) {
+                    alert(data.responseText);
+                },
+            })
+        });
+    </script> -->
 
 </body>
 
