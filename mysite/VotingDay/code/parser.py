@@ -1,33 +1,13 @@
 import numpy
 import os
 import csv
-from django.db.models import F
 
-class Party(object):
-    def __init__(self, party_name, totalvotes, vote1, vote2, vote3, vote4, vote5, vote6, vote7, vote8, vote9, vote10, vote11, vote12, vote13, vote14, vote15):
-        self.party_name = party_name
-        self.totalvotes = totalvotes
-        self.vote1 = vote1
-        self.vote2 = vote2
-        self.vote3 = vote3
-        self.vote4 = vote4
-        self.vote5 = vote5
-        self.vote6 = vote6
-        self.vote7 = vote7
-        self.vote8 = vote8
-        self.vote9 = vote9
-        self.vote10 = vote10
-        self.vote11 = vote11
-        self.vote12 = vote12
-        self.vote13 = vote13
-        self.vote14 = vote14
-        self.vote15 = vote15
-
+#checks if votes.csv exists or not
 if os.path.exists ('votes.csv'):
 
+    #opens file containing details of vote
     with open('votes.csv') as vfile:
         votelines = vfile.readlines()
-    print votelines
 
     number_of_options = len(votelines)
     Total = [0]* (number_of_options - 1) #5
@@ -49,8 +29,10 @@ if os.path.exists ('votes.csv'):
         for j in range (0, len(Party_votes[i])):
             Party_votes[i][j] = int(Party_votes[i][j])
 
+#checks if candidate.csv exists or not
 if os.path.exists ('candidates.csv'):
 
+    #opens candidate detail file
     with open('candidates.csv') as pfile:
         partylines = pfile.readlines()
 
@@ -82,8 +64,8 @@ if os.path.exists ('candidates.csv'):
 
 #change these to read from csv file
 number_of_voters = 322 #number of users
-number_of_seats = 15
-extra = 0
+number_of_seats = 15 #default number of seats
+extra = 0 #check to see if any party gets more seats that what their max capacity is
 
 #basic structure of variables
 seats_left = number_of_seats
@@ -113,6 +95,12 @@ while (seats_left != 0) and (currentEQ != 0):
     currentEQ = currentEQ - 1
     extra = 0
 
+#recursive algorithm
+#takes in election quiotient
+#calculates number of seats
+#checks total seats
+#calls itself with election quotient -1
+
 print
 print "Number of seats Won by each party:"
 print
@@ -126,11 +114,3 @@ for j in range (0, number_of_parties):
     for k in range (0, Party_seats[j]):
         print rzipped[j][k]
 print
-
-#print number_of_people_who_voted
-#print
-#print number_of_people_who_didnt_vote
-#print
-#print ("%.2f" % round(percent_of_people_who_voted,2))
-#print
-#print ("%.2f" % round(percent_of_people_who_didnt_vote,2))

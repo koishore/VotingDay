@@ -1,33 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>{% load static %}
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Voting Day- Thank You</title>
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="{% static 'VotingDay/css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="{% static 'VotingDay/css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link rel="icon" type="image/png" href="{% static 'VotingDay/img/favcon.jpg' %}"/>
-</head>
-<body bgcolor="#eeebeb">
-  <div>
-    <p>Number of seats won by each party:</p>
-    <!-- <ul>
-      {% for i in '01234'|make_list %}
-      <li>{{PartyName[i]}}: {{Party_seats[i]}}</li>
-      {% endfor %}
-    </ul> -->
-    <br></br>
-    <p>Members of the HOR:</p>
-    <!-- <ul>
-      {% for j in range (0, number_of_parties) %}
-      {% for k in range (0, Party_seats[j]) %}
-      <li>{{rzipped[j][k]}}</li>
-      {% endfor %}
-    </ul> -->
-  </div>
+  <head>{% load static %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Results</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{% static 'VotingDay/css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="{% static 'VotingDay/css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link rel="icon" type = 'image/png' href="{% static 'VotingDay/img/favicon.png' %}" />
+  </head>
+
+  <body bgcolor="#eeebeb">
+
+    <nav class="light-blue lighten-1" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">Voting Day</a>
+      </div>
+    </nav>
+
+    <div class = 'container'>
+      <div class = 'row' align = 'center'>
+        <p><h4>Number of seats won by each party:</h4></p>
+        <ul class="collection with-header col s6">
+          <li class="collection-header"><h5>Party Names</h5></li>
+          {% for i in PartyName %}
+            <li class="collection-item">{{i}}</li>
+          {% endfor %}
+        </ul>
+        <ul class="collection with-header col s6">
+          <li class="collection-header"><h5>Number of Seats Won</h5></li>
+          {% for i in Party_seats %}
+            <li class="collection-item">{{i}}</li>
+          {% endfor %}
+        </ul>
+        <br>
+        <ul class="collection with-header col s12">
+          <li class="collection-header"><h5>Members of the HOR</h5></li>
+          {% for k in Candlist %}
+            <li class="collection-item">{{k}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <footer class="page-footer rgb(21,43,100)">
+        <div class="footer-copyright">
+            <div class="container">
+                Made by Ayush, Koishore and Vineet
+            </div>
+        </div>
+    </footer>
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="{% static 'VotingDay/js/materialize.js' %}"></script>
+    <script src="{% static 'VotingDay/js/init.js' %}"></script>
 
   </body>
+
 </html>

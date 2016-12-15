@@ -1,9 +1,11 @@
 from django.contrib import admin
 from .models import User, Candidate, Vote
 
+#Admin panel for User creation and deletion
 class UserAdmin(admin.ModelAdmin):
     fields = ['email', 'userid']
 
+#Admin panel for Candidate/Party creation and deletion
 class CandidateAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Party Name',  {'fields': ['party_name']}),
@@ -24,6 +26,7 @@ class CandidateAdmin(admin.ModelAdmin):
         (None,          {'fields': ['candidate15']}),
     ]
 
+#Admin panel for Vote creation and deletion, mapped to CandidateAdmin
 class VoteAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Party Name',  {'fields': ['partyname']}),
