@@ -134,14 +134,3 @@ function DisBut() {
       document.getElementById("NOTA+1").disabled = true;
     }
   }
-
-function SubBut() {
-
-  var el1 = document.getElementById("Dhamma+0");
-  var el2 = document.getElementById("Prakrit+0");
-  var el3 = document.getElementById("United Ashoka+0");
-  var el4 = document.getElementById("Incredibly Sexy Irresistible Swagmasters+0");
-  var el5 = document.getElementById("Rashtriya Swag Sangh+0");
-  var el6 = document.getElementById("NOTA+0");
-
-}
