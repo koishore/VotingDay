@@ -55,7 +55,8 @@ def register(request):
 
             #saves party name in a variable
             else:
-                keys.remove("group1")
+                if "group1" in keys:
+                    keys.remove("group1")
                 partyNameAndIndex = keys[0].split("+")
                 index = []
 
@@ -173,19 +174,19 @@ def results(request):
     # algorithm (can be made recursive, but time complexity will increrase)
     while (seats_left != 0) and (currentEQ != 0):
         for i in range (0, number_of_parties):
-            no_of_seats = Total[i] / currentEQ
-            if no_of_seats > max_seats[i]:
-                number_of_seats = max_seats[i]
-                Total[i] = 0
-            Total[i] = (Total[i] % currentEQ)
-            Party_seats[i] = Party_seats[i] + no_of_seats
-            if Party_seats[i] > max_seats[i]:
-                extra = Party_seats[i] - max_seats[i]
-                Party_seats[i] = Party_seats[i] - extra
-                Total[i] = 0
-            seats_left = seats_left - no_of_seats + extra
-        currentEQ = currentEQ - 1
-        extra = 0
+            no_of_seats = Total[i] / currentEQ #number of seats won by party
+            if no_of_seats > max_seats[i]: #check to see if party got more seats than their strength
+                no_of_seats = max_seats[i] #revoke seats back to max_seats if there are extra(s)
+                Total[i] = 0 #set the remaining seats to 0
+            Total[i] = (Total[i] % currentEQ) #decrease the total seats if not first case deployed
+            Party_seats[i] = Party_seats[i] + no_of_seats #add party seats
+            if Party_seats[i] > max_seats[i]: #check if total party seats is greater than max_seats
+                extra = Party_seats[i] - max_seats[i] #set extra to the extra number of seats
+                Party_seats[i] = Party_seats[i] - extra #find actual number of seats by party
+                Total[i] = 0 #set total to 0
+            seats_left = seats_left - no_of_seats + extra #calculate number of seats left
+        currentEQ = currentEQ - 1 #decrease election quotient by 1
+        extra = 0 #reset extra to 0 for next interation of loop
 
     #recursive algorithm
     #takes in election quiotient

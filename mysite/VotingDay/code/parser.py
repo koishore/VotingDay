@@ -83,7 +83,7 @@ while (seats_left != 0) and (currentEQ != 0):
     for i in range (0, number_of_parties):
         no_of_seats = Total[i] / currentEQ
         if no_of_seats > max_seats[i]:
-            number_of_seats = max_seats[i]
+            no_of_seats = max_seats[i]
             Total[i] = 0
         Total[i] = (Total[i] % currentEQ)
         Party_seats[i] = Party_seats[i] + no_of_seats
