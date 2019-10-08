@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 #Displays index.html
 def index(request):
     userlist = User.objects.all()
-    template=loader.get_template('index.html')
+    template = loader.get_template('index.html')
 
     #manages the post request
     if request.method=='POST':
